@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 3 of 7 (Belief Store)
-Plan: 1 of 3 in current phase (03-01 complete)
+Plan: 2 of 3 in current phase (03-02 complete)
 Status: In progress
-Last activity: 2026-02-13 — Completed 03-01 SQLite Repository
+Last activity: 2026-02-13 — Completed 03-02 Query Layer
 
 Progress: [███░░░░░░░] 29% (2/7 phases)
 
@@ -52,12 +52,13 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 |-------|-------|--------|
 | 1 | 3/3 | ✓ Complete |
 | 2 | 3/3 | ✓ Complete |
-| 3 | 1/3 | ◆ Current |
+| 3 | 2/3 | ◆ Current |
 
 **Plan 02-01:** 2min - Confidence transition state machine
 **Plan 02-02:** 2min - Bayesian update function
 **Plan 02-03:** 2min - Observation lifecycle management
 **Plan 03-01:** 2min - SQLite Repository with CRUD operations
+**Plan 03-02:** 4min - Multi-dimensional retrieval with FTS5
 
 ## Accumulated Context
 
@@ -88,6 +89,10 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | JSON blob with indexed fields | Full model as JSON, extracted fields for queries | 3 |
 | Connection-per-operation | Thread safety via fresh connections | 3 |
 | INSERT OR REPLACE for upsert | Duplicate save updates existing record | 3 |
+| FTS5 with Porter stemmer | Word stemming for natural language search | 3 |
+| BM25 ranking for topic search | Standard IR ranking algorithm | 3 |
+| Ordinal confidence mapping | UNKNOWN=0, LOW=1, MEDIUM=2, HIGH=3 | 3 |
+| Trigger-based FTS sync | Automatic consistency without app coordination | 3 |
 
 ### Open Questions
 
@@ -98,8 +103,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Completed 03-01-PLAN.md
-Next: Execute 03-02 Query Layer
+Stopped at: Completed 03-02-PLAN.md
+Next: Execute 03-03 Migration Tooling
 
 ---
-*Next: /gsd:execute-plan 03-02*
+*Next: /gsd:execute-plan 03-03*
