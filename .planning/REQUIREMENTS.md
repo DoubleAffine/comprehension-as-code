@@ -1,120 +1,111 @@
 # Requirements: Comprehension-as-Code
 
-**Defined:** 2025-02-13
-**Core Value:** Agents must demonstrate verified understanding before acting—comprehension is inspectable, auditable, and compounds over time.
+**Defined:** 2026-02-13
+**Updated:** 2026-02-13 (architecture reframing)
+**Core Value:** Understanding is computation. Agents don't just *have* understanding—they *run* it.
 
 ## v1 Requirements
 
-Requirements for initial release. Each maps to roadmap phases.
+Requirements aligned to the cognitive architecture:
+Experience → Observation → Comprehension → Meta-comprehension → The Web
 
-### Memory Foundation
+### Cognitive Primitives
 
-- [ ] **MEM-01**: System persists episodic memory (events with temporal metadata) across sessions
-- [ ] **MEM-02**: System persists semantic memory (structured knowledge/beliefs) across sessions
-- [ ] **MEM-03**: System persists procedural memory (learned behavioral patterns) across sessions
-- [ ] **MEM-04**: Memory system compresses knowledge through abstraction layers (concrete → pattern → principle)
-- [ ] **MEM-05**: Memory system selectively records important observations, discarding noise
+- [x] **PRIM-01**: Observation schema captures ephemeral events with temporal metadata
+- [x] **PRIM-02**: Comprehension schema has Bayesian structure (prior/posterior)
+- [x] **PRIM-03**: Confidence levels defined in natural language (not numeric probabilities)
+- [x] **PRIM-04**: Clear distinction between observations (events) and comprehension (beliefs)
 
-### Comprehension Modeling
+### Bayesian Update
 
-- [ ] **COMP-01**: Agent builds explicit comprehension model before taking action
-- [ ] **COMP-02**: Comprehension model is inspectable and human-readable
-- [ ] **COMP-03**: Comprehension model expresses beliefs using Bayesian structure (priors → observations → posteriors) in natural language
-- [ ] **COMP-04**: Comprehension model tracks confidence levels for each belief
-- [ ] **COMP-05**: Agent performs self-reflection loop to validate understanding before acting
-- [ ] **COMP-06**: System defines clear format for what constitutes "comprehension" vs raw observations
+- [ ] **UPDATE-01**: Given observation + existing comprehension → new posterior computed
+- [ ] **UPDATE-02**: Confidence updates based on evidence (confirming → higher, contradicting → lower)
+- [ ] **UPDATE-03**: Provenance tracks which observations informed belief (references, not copies)
+- [ ] **UPDATE-04**: Observations can be garbage collected after informing comprehension
+- [ ] **UPDATE-05**: The posterior IS the compression (no separate compress step)
 
-### Meta-Agent
+### Belief Store
 
-- [ ] **META-01**: Dedicated meta-agent observes working agent execution
-- [ ] **META-02**: Meta-agent extracts learnings from working agent observations
-- [ ] **META-03**: Meta-agent extracts learnings from failures, not just successes
-- [ ] **META-04**: Meta-agent filters observations for signal (surprising, costly, transferable)
-- [ ] **META-05**: Checkpoint system prevents acting on unverified comprehension
-- [ ] **META-06**: Mistakes are recorded for learning but not propagated into further work
+- [ ] **STORE-01**: Comprehensions persist across sessions
+- [ ] **STORE-02**: Retrieval by domain, topic, confidence, recency
+- [ ] **STORE-03**: Storage is beliefs (posteriors), not evidence (observations)
+- [ ] **STORE-04**: Storage grows with understanding, not with evidence count
 
-### Cross-Project Accumulation
+### Convergence Detection
 
-- [ ] **ACCUM-01**: Knowledge transfers between projects (cross-project learning)
-- [ ] **ACCUM-02**: New agents bootstrap from accumulated comprehension
-- [ ] **ACCUM-03**: System abstracts concrete observations into reusable patterns
-- [ ] **ACCUM-04**: System abstracts patterns into higher-level principles
-- [ ] **ACCUM-05**: Compression preserves essence while reducing noise
+- [ ] **CONV-01**: Each new comprehension can query "what does this remind me of?"
+- [ ] **CONV-02**: Similarity is structural (same shape), not keyword-based
+- [ ] **CONV-03**: System tracks where comprehension density is building
+- [ ] **CONV-04**: Candidate patterns emerge from repeated structure (rising tide)
 
-### Verification
+### Meta-Comprehension
 
-- [ ] **VERIF-01**: Comprehension claims can be verified against codebase/evidence
-- [ ] **VERIF-02**: System detects when comprehension may be stale or wrong
-- [ ] **VERIF-03**: Error detection identifies failures in understanding
-- [ ] **VERIF-04**: Audit trail logs reasoning and belief updates for traceability
+- [ ] **META-01**: Emergence conditions defined (min instances, domain diversity, confidence threshold)
+- [ ] **META-02**: Meta-confidence computed from instance confidences
+- [ ] **META-03**: Crystallization: when threshold met, pattern becomes named meta-comprehension
+- [ ] **META-04**: New comprehensions recognized as "another instance of pattern X"
 
-## v2 Requirements
+### The Web
 
-Deferred to future release. Tracked but not in current roadmap.
+- [ ] **WEB-01**: Connections exist through structural similarity (implicit, not explicit edges)
+- [ ] **WEB-02**: From one comprehension, find related comprehensions (traversal)
+- [ ] **WEB-03**: From meta-comprehension, access instances (navigation)
+- [ ] **WEB-04**: Understanding is the web, not a list of documents
 
-### Advanced Knowledge
+### Agent Integration
 
-- **ADV-01**: Dynamic knowledge graph with automatic linking (Zettelkasten-style)
-- **ADV-02**: Temporal awareness with knowledge decay
-- **ADV-03**: Verbalized probabilistic graphical model simulation
+- [ ] **AGENT-01**: Working agent queries relevant comprehension before acting
+- [ ] **AGENT-02**: Working agent records observations during execution
+- [ ] **AGENT-03**: Working agent updates comprehension after task (Bayesian update)
+- [ ] **AGENT-04**: Meta-agent observes comprehension accumulation (not execution)
+- [ ] **AGENT-05**: Meta-agent detects convergence, triggers crystallization
+- [ ] **AGENT-06**: Bootstrap: new agents load accumulated understanding
 
-### Scale
+## Key Design Principles
 
-- **SCALE-01**: Multi-framework adapter support (beyond initial implementation)
-- **SCALE-02**: Distributed meta-agent for parallel observation
-- **SCALE-03**: Conflict resolution for contradictory cross-project knowledge
+These principles constrain implementation. Violating them is a defect.
+
+| Principle | Meaning |
+|-----------|---------|
+| **Posterior IS compression** | No separate compression step; belief update compresses evidence into understanding |
+| **Rising tide emergence** | Patterns become obvious through accumulation (Grothendieck); don't force abstraction |
+| **Patterns between patterns** | The best abstraction notices analogies between theories (Banach) |
+| **Memory efficiency** | Store beliefs, not evidence; observations are ephemeral, comprehensions persist |
+| **Language confidence** | Natural language levels (HIGH/MEDIUM/LOW/UNKNOWN), not numeric probabilities |
+| **Implicit web** | Connections exist because structures are similar, not because we drew edges |
 
 ## Out of Scope
 
-Explicitly excluded. Documented to prevent scope creep.
+Explicitly excluded to prevent scope creep.
 
 | Feature | Reason |
 |---------|--------|
-| Numeric Bayesian probabilities | Language-based confidence, not math; false precision |
+| Numeric Bayesian probabilities | Language-based confidence; LLMs work in language, not math |
+| Forced abstraction pipeline | Rising tide: emergence, not construction |
 | Human-first interface | Primary consumer is agents; optimize for machine consumption |
-| Per-project isolation | Explicitly cross-project; isolation defeats the purpose |
-| Full autonomy without guardrails | Checkpoints required; silent failure is unacceptable |
-| Real-time observation | Batch/checkpoint-based sufficient for v1; real-time adds complexity |
-| God prompt (everything in one system prompt) | Decompose into focused, composable components |
+| Per-project isolation | Understanding accumulates across projects |
+| Explicit graph construction | The web is implicit in structural similarity |
+| Real-time observation | Batch/checkpoint-based sufficient for v1 |
 
 ## Traceability
 
-Which phases cover which requirements. Updated during roadmap creation.
+Requirements mapped to roadmap phases.
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| COMP-06 | Phase 1: Comprehension Format | Pending |
-| MEM-01 | Phase 2: Memory Persistence | Pending |
-| MEM-02 | Phase 2: Memory Persistence | Pending |
-| MEM-03 | Phase 2: Memory Persistence | Pending |
-| MEM-04 | Phase 3: Memory Intelligence | Pending |
-| MEM-05 | Phase 3: Memory Intelligence | Pending |
-| COMP-01 | Phase 4: Comprehension Modeling | Pending |
-| COMP-02 | Phase 4: Comprehension Modeling | Pending |
-| COMP-03 | Phase 4: Comprehension Modeling | Pending |
-| COMP-04 | Phase 4: Comprehension Modeling | Pending |
-| COMP-05 | Phase 5: Verification Layer | Pending |
-| VERIF-01 | Phase 5: Verification Layer | Pending |
-| VERIF-02 | Phase 5: Verification Layer | Pending |
-| VERIF-03 | Phase 5: Verification Layer | Pending |
-| VERIF-04 | Phase 5: Verification Layer | Pending |
-| META-01 | Phase 6: Meta-Agent Observation | Pending |
-| META-02 | Phase 6: Meta-Agent Observation | Pending |
-| META-03 | Phase 6: Meta-Agent Observation | Pending |
-| META-04 | Phase 6: Meta-Agent Observation | Pending |
-| META-05 | Phase 7: Checkpoint Safety | Pending |
-| META-06 | Phase 7: Checkpoint Safety | Pending |
-| ACCUM-01 | Phase 8: Cross-Project Accumulation | Pending |
-| ACCUM-02 | Phase 8: Cross-Project Accumulation | Pending |
-| ACCUM-03 | Phase 8: Cross-Project Accumulation | Pending |
-| ACCUM-04 | Phase 8: Cross-Project Accumulation | Pending |
-| ACCUM-05 | Phase 8: Cross-Project Accumulation | Pending |
+| Phase | Requirements |
+|-------|-------------|
+| 1. Cognitive Primitives ✓ | PRIM-01, PRIM-02, PRIM-03, PRIM-04 |
+| 2. Bayesian Update | UPDATE-01, UPDATE-02, UPDATE-03, UPDATE-04, UPDATE-05 |
+| 3. Belief Store | STORE-01, STORE-02, STORE-03, STORE-04 |
+| 4. Convergence Detection | CONV-01, CONV-02, CONV-03, CONV-04 |
+| 5. Meta-Comprehension | META-01, META-02, META-03, META-04 |
+| 6. The Web | WEB-01, WEB-02, WEB-03, WEB-04 |
+| 7. Agent Integration | AGENT-01 through AGENT-06 |
 
 **Coverage:**
-- v1 requirements: 26 total
-- Mapped to phases: 26
-- Unmapped: 0
+- Total requirements: 27
+- Phase 1 (complete): 4/4
+- Remaining: 23
 
 ---
-*Requirements defined: 2025-02-13*
-*Last updated: 2025-02-13 after roadmap creation*
+*Aligned with cognitive architecture: 2026-02-13*
+*Reference: .planning/ARCHITECTURE_SKETCH.md*

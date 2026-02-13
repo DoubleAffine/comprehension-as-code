@@ -12,7 +12,7 @@ Key distinction:
 - **Observations** = What happened (events, without interpretation)
 - **Comprehension** = What we now believe (structured understanding)
 
-Observations are **episodic memory**: timestamped events that can later be synthesized into **semantic memory** (comprehension).
+Observations are **episodic memory**: timestamped events that inform comprehension via Bayesian update. Once an observation has informed a belief, the observation itself can be garbage collected—the posterior IS the compression. We store beliefs, not evidence.
 
 ## Document Structure
 
@@ -150,4 +150,8 @@ obs = Observation(**frontmatter_data)  # Raises ValidationError if invalid
 
 ## Retention
 
-Observation retention policy is defined in Phase 3 (Memory Intelligence). For now, observations persist indefinitely.
+Observations are ephemeral by design. Once an observation has informed a comprehension (via Bayesian update), it can be garbage collected. The comprehension's provenance field retains references to observation IDs, but the observation content itself is no longer needed.
+
+**Key insight:** The posterior IS the compression. We don't need to store the evidence that produced a belief—we store the belief.
+
+Retention policy details are implemented in Phase 2 (Bayesian Update) and Phase 3 (Belief Store).

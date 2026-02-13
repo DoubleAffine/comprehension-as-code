@@ -14,6 +14,8 @@ Key distinction:
 
 Comprehension follows a Bayesian structure: prior belief → observations → posterior belief.
 
+**Key insight:** The posterior IS the compression. No separate compression step is needed. The belief state encodes what all observations taught—we store the understanding, not the evidence.
+
 ## Document Structure
 
 Comprehension documents use **Markdown with YAML frontmatter**:
@@ -215,3 +217,9 @@ comp = Comprehension(**frontmatter_data)  # Raises ValidationError if invalid
 - `spec` field tracks schema version
 - `version` field tracks document version
 - When schema changes, migration scripts update old documents
+
+## Future: Emergence
+
+As comprehensions accumulate, convergence detection (Phase 4) will ask "what does this remind me of?" When the same structure appears across domains with high confidence, it crystallizes into **meta-comprehension**—a pattern between patterns.
+
+This is the **rising tide** approach: we don't force abstraction. Patterns become obvious through accumulation.

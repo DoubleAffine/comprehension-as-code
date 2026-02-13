@@ -5,6 +5,12 @@
 **Researched:** 2026-02-13
 **Confidence:** MEDIUM-HIGH
 
+> **Note (2026-02-13):** This research was conducted before the architecture reframing. The phase structure below has been superseded by the cognitive architecture in ARCHITECTURE_SKETCH.md. Core insights remain valid; phase mappings do not. Key additions since research:
+> - **"Posterior IS compression"** — No separate compression step
+> - **Rising tide emergence** (Grothendieck) — Patterns become obvious through accumulation
+> - **Patterns between patterns** (Banach) — Meta-comprehension crystallization
+> - See: ROADMAP.md for current 7-phase structure
+
 ## Executive Summary
 
 Comprehension-as-Code inverts the traditional AI agent paradigm by treating verified understanding as the primary artifact rather than actions. While most agent systems implicitly build understanding to enable action, this project explicitly captures, validates, and accumulates comprehension models that can bootstrap future agents. The system consists of a meta-agent layer that observes working agents, extracts understanding through natural language Bayesian belief updates, and accumulates cross-project knowledge.
