@@ -83,38 +83,38 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MEM-01 | TBD | Pending |
-| MEM-02 | TBD | Pending |
-| MEM-03 | TBD | Pending |
-| MEM-04 | TBD | Pending |
-| MEM-05 | TBD | Pending |
-| COMP-01 | TBD | Pending |
-| COMP-02 | TBD | Pending |
-| COMP-03 | TBD | Pending |
-| COMP-04 | TBD | Pending |
-| COMP-05 | TBD | Pending |
-| COMP-06 | TBD | Pending |
-| META-01 | TBD | Pending |
-| META-02 | TBD | Pending |
-| META-03 | TBD | Pending |
-| META-04 | TBD | Pending |
-| META-05 | TBD | Pending |
-| META-06 | TBD | Pending |
-| ACCUM-01 | TBD | Pending |
-| ACCUM-02 | TBD | Pending |
-| ACCUM-03 | TBD | Pending |
-| ACCUM-04 | TBD | Pending |
-| ACCUM-05 | TBD | Pending |
-| VERIF-01 | TBD | Pending |
-| VERIF-02 | TBD | Pending |
-| VERIF-03 | TBD | Pending |
-| VERIF-04 | TBD | Pending |
+| COMP-06 | Phase 1: Comprehension Format | Pending |
+| MEM-01 | Phase 2: Memory Persistence | Pending |
+| MEM-02 | Phase 2: Memory Persistence | Pending |
+| MEM-03 | Phase 2: Memory Persistence | Pending |
+| MEM-04 | Phase 3: Memory Intelligence | Pending |
+| MEM-05 | Phase 3: Memory Intelligence | Pending |
+| COMP-01 | Phase 4: Comprehension Modeling | Pending |
+| COMP-02 | Phase 4: Comprehension Modeling | Pending |
+| COMP-03 | Phase 4: Comprehension Modeling | Pending |
+| COMP-04 | Phase 4: Comprehension Modeling | Pending |
+| COMP-05 | Phase 5: Verification Layer | Pending |
+| VERIF-01 | Phase 5: Verification Layer | Pending |
+| VERIF-02 | Phase 5: Verification Layer | Pending |
+| VERIF-03 | Phase 5: Verification Layer | Pending |
+| VERIF-04 | Phase 5: Verification Layer | Pending |
+| META-01 | Phase 6: Meta-Agent Observation | Pending |
+| META-02 | Phase 6: Meta-Agent Observation | Pending |
+| META-03 | Phase 6: Meta-Agent Observation | Pending |
+| META-04 | Phase 6: Meta-Agent Observation | Pending |
+| META-05 | Phase 7: Checkpoint Safety | Pending |
+| META-06 | Phase 7: Checkpoint Safety | Pending |
+| ACCUM-01 | Phase 8: Cross-Project Accumulation | Pending |
+| ACCUM-02 | Phase 8: Cross-Project Accumulation | Pending |
+| ACCUM-03 | Phase 8: Cross-Project Accumulation | Pending |
+| ACCUM-04 | Phase 8: Cross-Project Accumulation | Pending |
+| ACCUM-05 | Phase 8: Cross-Project Accumulation | Pending |
 
 **Coverage:**
 - v1 requirements: 26 total
-- Mapped to phases: 0
-- Unmapped: 26 ⚠️
+- Mapped to phases: 26
+- Unmapped: 0
 
 ---
 *Requirements defined: 2025-02-13*
-*Last updated: 2025-02-13 after initial definition*
+*Last updated: 2025-02-13 after roadmap creation*
