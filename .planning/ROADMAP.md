@@ -64,9 +64,12 @@ Plans:
   4. Observation references are maintained; observation content can be pruned
   5. Storage grows with understanding, not with evidence count
 
+**Plans:** 3 plans
+
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md - SQLite repository + schema (TDD, Wave 1)
+- [ ] 03-02-PLAN.md - Multi-dimensional retrieval + FTS5 (TDD, Wave 2)
+- [ ] 03-03-PLAN.md - BeliefStore facade + ObservationIndex (Wave 3)
 
 ### Phase 4: Convergence Detection
 **Goal**: System notices when the same structure appears across domains (rising tide)
@@ -140,7 +143,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 |-------|----------------|--------|-----------|
 | 1. Cognitive Primitives | 3/3 | ✓ Complete | 2026-02-13 |
 | 2. Bayesian Update | 3/3 | ✓ Complete | 2026-02-13 |
-| 3. Belief Store | 0/TBD | Not started | - |
+| 3. Belief Store | 0/3 | Planned | - |
 | 4. Convergence Detection | 0/TBD | Not started | - |
 | 5. Meta-Comprehension | 0/TBD | Not started | - |
 | 6. The Web | 0/TBD | Not started | - |
