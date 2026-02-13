@@ -4,6 +4,7 @@ from .confidence_rules import (
     CONFIDENCE_TRANSITIONS,
 )
 from .lifecycle import ObservationState, ObservationLifecycle
+from .bayesian_update import bayesian_update
 
 __all__ = [
     "EvidenceType",
@@ -11,4 +12,5 @@ __all__ = [
     "CONFIDENCE_TRANSITIONS",
     "ObservationState",
     "ObservationLifecycle",
+    "bayesian_update",
 ]
