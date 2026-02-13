@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-13)
 
 **Core value:** Understanding is computation.
-**Current focus:** Phase 2 - Bayesian Update
+**Current focus:** Phase 3 - Belief Store
 
 ## Current Position
 
-Phase: 2 of 7 (Bayesian Update)
-Plan: 3 of 3 in current phase (02-01, 02-02, 02-03 complete)
-Status: Phase complete
-Last activity: 2026-02-13 — Completed 02-02 bayesian_update
+Phase: 3 of 7 (Belief Store)
+Plan: 1 of 3 in current phase (03-01 complete)
+Status: In progress
+Last activity: 2026-02-13 — Completed 03-01 SQLite Repository
 
 Progress: [███░░░░░░░] 29% (2/7 phases)
 
@@ -52,10 +52,12 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 |-------|-------|--------|
 | 1 | 3/3 | ✓ Complete |
 | 2 | 3/3 | ✓ Complete |
+| 3 | 1/3 | ◆ Current |
 
 **Plan 02-01:** 2min - Confidence transition state machine
 **Plan 02-02:** 2min - Bayesian update function
 **Plan 02-03:** 2min - Observation lifecycle management
+**Plan 03-01:** 2min - SQLite Repository with CRUD operations
 
 ## Accumulated Context
 
@@ -83,6 +85,9 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | Lifecycle not thread-safe | Callers handle synchronization | 2 |
 | Idempotency via observation ID | Simple check before processing | 2 |
 | Contradicting requires new_statement | Enforced via ValueError | 2 |
+| JSON blob with indexed fields | Full model as JSON, extracted fields for queries | 3 |
+| Connection-per-operation | Thread safety via fresh connections | 3 |
+| INSERT OR REPLACE for upsert | Duplicate save updates existing record | 3 |
 
 ### Open Questions
 
@@ -93,8 +98,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Completed 02-02-PLAN.md (Phase 2 complete)
-Next: Start Phase 3 - Belief Store
+Stopped at: Completed 03-01-PLAN.md
+Next: Execute 03-02 Query Layer
 
 ---
-*Next: /gsd:execute-phase 03*
+*Next: /gsd:execute-plan 03-02*
