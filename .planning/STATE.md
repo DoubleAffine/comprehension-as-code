@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 4 of 7 (Convergence Detection)
-Plan: 1 of 3 in current phase (04-01 complete)
+Plan: 2 of 3 in current phase (04-02 complete)
 Status: In progress
-Last activity: 2026-02-13 — Completed 04-01 Embeddings & Vector Store
+Last activity: 2026-02-13 — Completed 04-02 Similarity Detection
 
 Progress: [████░░░░░░] 43% (3/7 phases)
 
@@ -61,6 +61,7 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 **Plan 03-02:** 4min - Multi-dimensional retrieval with FTS5
 **Plan 03-03:** 3min - BeliefStore facade and ObservationIndex
 **Plan 04-01:** 3min - Embeddings & Vector Store (sentence-transformers, sqlite-vec)
+**Plan 04-02:** 6min - Similarity Detection (reminds_me_of, AccumulationTracker)
 
 ## Accumulated Context
 
@@ -104,10 +105,13 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | Prior + posterior embedding | Captures belief transformation shape, not just topic | 4 |
 | sqlite-vec k=? syntax | KNN queries require k in WHERE clause, not LIMIT | 4 |
 | Hash-based rowid mapping | Stable positive int32 keys via hash & 0x7FFFFFFF | 4 |
+| Domain exclusion in reminds_me_of | Prevents same-domain noise, enforces cross-domain pattern matching | 4 |
+| Over-fetch 3x for filtering | Query more candidates to allow for domain/threshold filtering | 4 |
+| Hotspot ordering by domain_count | More domains = stronger rising tide signal | 4 |
 
 ### Open Questions
 
-1. How to detect structural similarity across domains? (Phase 4)
+1. ~~How to detect structural similarity across domains?~~ RESOLVED (Plan 04-02): reminds_me_of() with cross-domain filtering
 2. What are the emergence thresholds for crystallization? (Phase 5)
 3. Observation retention policy before GC? (Phase 2/3)
 4. SDK wrapper vs proxy server for harness? (Phase 7)
@@ -118,8 +122,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Completed 04-01-PLAN.md (Embeddings & Vector Store)
-Next: Execute 04-02-PLAN.md (Similarity Detection)
+Stopped at: Completed 04-02-PLAN.md (Similarity Detection)
+Next: Execute 04-03-PLAN.md (Integration & Verification)
 
 ---
-*Next: /gsd:execute-phase 04-02*
+*Next: /gsd:execute-phase 04-03*
