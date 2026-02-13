@@ -66,10 +66,12 @@ The Web (interconnected understanding)
 - [ ] Comprehension persistence (belief state)
 - [ ] Retrieval by relevance (not "load all")
 
-**Integration:**
-- [ ] Working agent integration (query before act, update after)
-- [ ] Meta-agent (observes comprehension accumulation, detects convergence)
-- [ ] Bootstrap (new agents inherit accumulated understanding)
+**Integration (API Harness):**
+- [ ] Request interception (capture all model API calls)
+- [ ] Belief enrichment (query relevant comprehensions, inject as context)
+- [ ] Observation extraction (identify noteworthy patterns in interactions)
+- [ ] Automatic updates (Bayesian update + convergence detection, no explicit calls)
+- [ ] Bootstrap (new sessions start with accumulated understanding)
 
 ### Out of Scope
 
@@ -93,6 +95,8 @@ The Web (interconnected understanding)
 We're building the third level: patterns between patterns.
 
 **Grothendieck's method:** Don't attack the problem. Raise the water level until it dissolves. Abstraction isn't forced—it becomes obvious through accumulation.
+
+**API Harness model (2026-02-13):** Understanding is automatic, not opt-in. Instead of agents explicitly calling tools to query/update beliefs, a harness layer intercepts all model API calls. Every interaction enriches prompts with relevant beliefs and extracts observations for Bayesian update. Understanding accumulates continuously across all sessions and interfaces.
 
 ## Constraints
 

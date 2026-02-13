@@ -202,28 +202,67 @@ This is Bayesian:
 - Posterior: Updated confidence in pattern generality
 - Crystallization: When posterior reaches HIGH
 
-## Agent Integration
+## API Harness Integration
 
-### Working Agent
-- Executes tasks
-- Generates experience
-- Records observations (surprising/important)
-- Updates comprehensions (Bayesian)
-- Queries existing comprehension before acting
+### The Harness Model
 
-### Meta Agent
-- Observes comprehension accumulation
-- Detects convergence (same shapes across domains)
-- Crystallizes meta-comprehension when conditions met
-- Maintains the web (relationships between patterns)
-- Doesn't intervene in work - only in understanding
+Understanding is automatic, not opt-in. Instead of agents explicitly calling tools to query/update beliefs, a harness layer intercepts all model interactions:
 
-### Bootstrap
-New agent on new project:
-1. Load relevant meta-comprehensions (high-level patterns)
-2. Load domain-specific comprehensions (if domain known)
-3. Start with accumulated priors, not blank slate
-4. Rising tide continues from current water level
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    CLIENT LAYER                              │
+│         (Claude Code, API calls, Web interface)              │
+└─────────────────────────────────────────────────────────────┘
+                            ↓ request
+┌─────────────────────────────────────────────────────────────┐
+│                 COMPREHENSION HARNESS                        │
+│                                                              │
+│  INBOUND:                                                    │
+│  1. Intercept prompt                                         │
+│  2. Extract domain/topic signals                             │
+│  3. Query relevant comprehensions from BeliefStore           │
+│  4. Enrich prompt with belief context                        │
+│  5. Forward enriched prompt to model                         │
+│                                                              │
+│  OUTBOUND:                                                   │
+│  6. Receive response                                         │
+│  7. Extract observations from interaction                    │
+│  8. Run Bayesian updates on affected comprehensions          │
+│  9. Run convergence detection (async/batched)                │
+│  10. Persist updated beliefs                                 │
+│  11. Return original response to client                      │
+└─────────────────────────────────────────────────────────────┘
+                            ↓ enriched request
+┌─────────────────────────────────────────────────────────────┐
+│                    ANTHROPIC API                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Key Properties
+
+**Automatic:** Every interaction builds understanding without explicit action
+**Transparent:** Client doesn't know harness exists; response unchanged
+**Continuous:** Understanding accumulates across all sessions, all interfaces
+**Implicit:** The meta-agent role is absorbed—convergence detection runs in harness update cycle
+
+### Harness Components
+
+1. **Request Interceptor** - Captures incoming prompts
+2. **Belief Enricher** - Queries relevant comprehensions, injects as context
+3. **Observation Extractor** - Identifies noteworthy patterns in interaction
+4. **Update Engine** - Runs Bayesian updates (Phase 2)
+5. **Convergence Detector** - Checks for structural similarity (Phase 4)
+6. **Crystallizer** - Creates meta-comprehensions when thresholds met (Phase 5)
+
+### Bootstrap via Harness
+
+New conversation/session:
+1. Harness extracts domain signals from first prompt
+2. Queries relevant meta-comprehensions (high-level patterns)
+3. Queries domain-specific comprehensions
+4. Enriches prompt with accumulated priors
+5. Model starts informed, not blank
+6. Rising tide continues from current water level
 
 ## Open Questions
 

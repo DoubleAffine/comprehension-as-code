@@ -37,7 +37,7 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | 4 | Convergence Detection | ◆ Current |
 | 5 | Meta-Comprehension | ○ Pending |
 | 6 | The Web | ○ Pending |
-| 7 | Agent Integration | ○ Pending |
+| 7 | API Harness | ○ Pending |
 
 ## Performance Metrics
 
@@ -98,18 +98,25 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | Composite PK for observation refs | (observation_id, comprehension_id) for many-to-many | 3 |
 | BeliefStore auto-manages index | save() records refs, delete() cleans them up | 3 |
 | Pruning is marking not deleting | observation_pruned table tracks deleted content | 3 |
+| API harness over agent tools | Understanding automatic, not opt-in; wraps all model calls | 7 |
 
 ### Open Questions
 
 1. How to detect structural similarity across domains? (Phase 4)
 2. What are the emergence thresholds for crystallization? (Phase 5)
 3. Observation retention policy before GC? (Phase 2/3)
+4. SDK wrapper vs proxy server for harness? (Phase 7)
+5. How to extract domain/topic signals from prompts? (Phase 7)
+6. How much belief context to inject without blowing up token usage? (Phase 7)
+7. Async vs sync observation extraction and update? (Phase 7)
 
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Completed 03-03-PLAN.md (Phase 3 complete)
+Stopped at: Architectural pivot - Agent Integration → API Harness
+Change: Understanding is now automatic via API harness, not opt-in via agent tools
 Next: Begin Phase 4 - Convergence Detection
 
 ---
-*Next: /gsd:plan-phase 04-convergence-detection*
+*Architecture pivot: 2026-02-13 - See ARCHITECTURE_SKETCH.md for harness design*
+*Next: /gsd:plan-phase 4*

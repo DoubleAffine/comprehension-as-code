@@ -18,18 +18,18 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 
 ### Bayesian Update
 
-- [ ] **UPDATE-01**: Given observation + existing comprehension → new posterior computed
-- [ ] **UPDATE-02**: Confidence updates based on evidence (confirming → higher, contradicting → lower)
-- [ ] **UPDATE-03**: Provenance tracks which observations informed belief (references, not copies)
-- [ ] **UPDATE-04**: Observations can be garbage collected after informing comprehension
-- [ ] **UPDATE-05**: The posterior IS the compression (no separate compress step)
+- [x] **UPDATE-01**: Given observation + existing comprehension → new posterior computed
+- [x] **UPDATE-02**: Confidence updates based on evidence (confirming → higher, contradicting → lower)
+- [x] **UPDATE-03**: Provenance tracks which observations informed belief (references, not copies)
+- [x] **UPDATE-04**: Observations can be garbage collected after informing comprehension
+- [x] **UPDATE-05**: The posterior IS the compression (no separate compress step)
 
 ### Belief Store
 
-- [ ] **STORE-01**: Comprehensions persist across sessions
-- [ ] **STORE-02**: Retrieval by domain, topic, confidence, recency
-- [ ] **STORE-03**: Storage is beliefs (posteriors), not evidence (observations)
-- [ ] **STORE-04**: Storage grows with understanding, not with evidence count
+- [x] **STORE-01**: Comprehensions persist across sessions
+- [x] **STORE-02**: Retrieval by domain, topic, confidence, recency
+- [x] **STORE-03**: Storage is beliefs (posteriors), not evidence (observations)
+- [x] **STORE-04**: Storage grows with understanding, not with evidence count
 
 ### Convergence Detection
 
@@ -52,14 +52,16 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 - [ ] **WEB-03**: From meta-comprehension, access instances (navigation)
 - [ ] **WEB-04**: Understanding is the web, not a list of documents
 
-### Agent Integration
+### API Harness
 
-- [ ] **AGENT-01**: Working agent queries relevant comprehension before acting
-- [ ] **AGENT-02**: Working agent records observations during execution
-- [ ] **AGENT-03**: Working agent updates comprehension after task (Bayesian update)
-- [ ] **AGENT-04**: Meta-agent observes comprehension accumulation (not execution)
-- [ ] **AGENT-05**: Meta-agent detects convergence, triggers crystallization
-- [ ] **AGENT-06**: Bootstrap: new agents load accumulated understanding
+- [ ] **HARNESS-01**: Harness intercepts all model API requests
+- [ ] **HARNESS-02**: Harness extracts domain/topic signals from prompts
+- [ ] **HARNESS-03**: Harness enriches prompts with relevant comprehensions (automatic, not opt-in)
+- [ ] **HARNESS-04**: Harness extracts observations from model interactions
+- [ ] **HARNESS-05**: Harness triggers Bayesian updates after interactions
+- [ ] **HARNESS-06**: Harness runs convergence detection (async/batched)
+- [ ] **HARNESS-07**: Bootstrap: new sessions start with accumulated understanding
+- [ ] **HARNESS-08**: Harness is transparent to client (response unchanged)
 
 ## Key Design Principles
 
@@ -94,17 +96,17 @@ Requirements mapped to roadmap phases.
 | Phase | Requirements |
 |-------|-------------|
 | 1. Cognitive Primitives ✓ | PRIM-01, PRIM-02, PRIM-03, PRIM-04 |
-| 2. Bayesian Update | UPDATE-01, UPDATE-02, UPDATE-03, UPDATE-04, UPDATE-05 |
-| 3. Belief Store | STORE-01, STORE-02, STORE-03, STORE-04 |
+| 2. Bayesian Update ✓ | UPDATE-01, UPDATE-02, UPDATE-03, UPDATE-04, UPDATE-05 |
+| 3. Belief Store ✓ | STORE-01, STORE-02, STORE-03, STORE-04 |
 | 4. Convergence Detection | CONV-01, CONV-02, CONV-03, CONV-04 |
 | 5. Meta-Comprehension | META-01, META-02, META-03, META-04 |
 | 6. The Web | WEB-01, WEB-02, WEB-03, WEB-04 |
-| 7. Agent Integration | AGENT-01 through AGENT-06 |
+| 7. API Harness | HARNESS-01 through HARNESS-08 |
 
 **Coverage:**
-- Total requirements: 27
-- Phase 1 (complete): 4/4
-- Remaining: 23
+- Total requirements: 29
+- Phase 1-3 (complete): 13/13
+- Remaining: 16
 
 ---
 *Aligned with cognitive architecture: 2026-02-13*

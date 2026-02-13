@@ -3,9 +3,11 @@
 ## Overview
 
 A computational theory of understanding. The roadmap follows the cognitive architecture:
-primitives → operations → storage → emergence → integration.
+primitives → operations → storage → emergence → harness.
 
-Phase 1 (primitives) is complete. Remaining phases build the operations, memory model, and emergence conditions that make understanding computable.
+Phases 1-3 built the core engine (primitives, Bayesian update, persistence). Remaining phases build emergence (convergence, meta-comprehension, web) and the API harness that makes understanding automatic.
+
+**Architectural pivot (2026-02-13):** Instead of agents explicitly calling tools to query/update beliefs, an API harness intercepts all model interactions and handles understanding automatically. Every interaction builds understanding without explicit action.
 
 ## Phases
 
@@ -19,7 +21,7 @@ Phase 1 (primitives) is complete. Remaining phases build the operations, memory 
 - [ ] **Phase 4: Convergence Detection** - Notice "same shape" across domains (rising tide)
 - [ ] **Phase 5: Meta-Comprehension** - Emergence conditions and crystallization
 - [ ] **Phase 6: The Web** - Implicit connections, traversal, bootstrap
-- [ ] **Phase 7: Agent Integration** - Working agent + meta-agent orchestration
+- [ ] **Phase 7: API Harness** - Middleware that wraps model calls with automatic understanding
 
 ## Phase Details
 
@@ -118,17 +120,19 @@ Plans:
 - [ ] 06-01: TBD
 - [ ] 06-02: TBD
 
-### Phase 7: Agent Integration
-**Goal**: Working agents query and update understanding; meta-agent observes and crystallizes
+### Phase 7: API Harness
+**Goal**: Middleware wraps all model interactions; understanding is automatic, not opt-in
 **Depends on**: Phase 6
-**Requirements**: Working agent protocol, meta-agent, observation flow
+**Requirements**: Request interception, belief enrichment, observation extraction, update triggers
 **Success Criteria** (what must be TRUE):
-  1. Working agent: queries relevant comprehension before acting
-  2. Working agent: records observations during execution
-  3. Working agent: updates comprehension after task (Bayesian update)
-  4. Meta-agent: observes comprehension accumulation (not execution)
-  5. Meta-agent: detects convergence, triggers crystallization
-  6. Full loop: experience → observation → comprehension → meta-comprehension → bootstrap
+  1. Harness intercepts all model API requests transparently
+  2. Harness extracts domain/topic signals and queries relevant comprehensions
+  3. Harness enriches prompts with belief context (automatic, not tool-based)
+  4. Harness extracts observations from model interactions
+  5. Harness triggers Bayesian updates and convergence detection
+  6. Bootstrap: new sessions start with accumulated understanding
+  7. Full loop: interaction → observation → comprehension → meta-comprehension → enriched interaction
+  8. Client-transparent: response unchanged, understanding accumulates invisibly
 
 Plans:
 - [ ] 07-01: TBD
@@ -148,7 +152,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 4. Convergence Detection | 0/TBD | Not started | - |
 | 5. Meta-Comprehension | 0/TBD | Not started | - |
 | 6. The Web | 0/TBD | Not started | - |
-| 7. Agent Integration | 0/TBD | Not started | - |
+| 7. API Harness | 0/TBD | Not started | - |
 
 ---
 *Roadmap reframed: 2026-02-13*
