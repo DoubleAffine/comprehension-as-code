@@ -4,7 +4,7 @@ import sqlite3
 from typing import Optional
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2  # v2: Added FTS5 virtual table for topic search
 
 
 def ensure_schema(conn: sqlite3.Connection) -> None:
@@ -29,11 +29,13 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
     if current_version is None:
         # Fresh database - apply full schema
         _apply_v1_schema(conn)
+        _apply_v2_fts5(conn)
         _set_schema_version(conn, SCHEMA_VERSION)
     elif current_version < SCHEMA_VERSION:
-        # Future: migration logic goes here
-        # For now, we only have v1
-        pass
+        # Apply migrations incrementally
+        if current_version < 2:
+            _apply_v2_fts5(conn)
+            _set_schema_version(conn, 2)
 
     conn.commit()
 
@@ -96,4 +98,81 @@ def _apply_v1_schema(conn: sqlite3.Connection) -> None:
     conn.execute("""
         CREATE INDEX IF NOT EXISTS idx_comprehensions_domain_confidence
         ON comprehensions(domain, confidence)
+    """)
+
+
+def _check_fts5_available(conn: sqlite3.Connection) -> bool:
+    """Check if FTS5 extension is available."""
+    try:
+        conn.execute("SELECT fts5(?)", ("test",))
+        return True
+    except sqlite3.OperationalError:
+        # FTS5 not available via function, try creating a temp table
+        try:
+            conn.execute(
+                "CREATE VIRTUAL TABLE IF NOT EXISTS _fts5_test "
+                "USING fts5(content)"
+            )
+            conn.execute("DROP TABLE IF EXISTS _fts5_test")
+            return True
+        except sqlite3.OperationalError:
+            return False
+
+
+def _apply_v2_fts5(conn: sqlite3.Connection) -> None:
+    """Apply version 2 schema: FTS5 full-text search.
+
+    Creates FTS5 virtual table for topic search with Porter stemmer.
+    Adds triggers to keep FTS5 index in sync with comprehensions table.
+    """
+    if not _check_fts5_available(conn):
+        # FTS5 not available - skip (graceful degradation)
+        # find_by_topic will fall back to LIKE queries
+        return
+
+    # FTS5 virtual table for full-text search on topic
+    # Uses Porter stemmer for word stemming (e.g., "learning" matches "learn")
+    conn.execute("""
+        CREATE VIRTUAL TABLE IF NOT EXISTS comprehensions_fts
+        USING fts5(
+            id,
+            topic,
+            domain,
+            content='comprehensions',
+            content_rowid='rowid',
+            tokenize='porter unicode61'
+        )
+    """)
+
+    # Trigger: INSERT - add to FTS index
+    conn.execute("""
+        CREATE TRIGGER IF NOT EXISTS comprehensions_fts_insert
+        AFTER INSERT ON comprehensions
+        BEGIN
+            INSERT INTO comprehensions_fts(rowid, id, topic, domain)
+            VALUES (NEW.rowid, NEW.id, NEW.topic, NEW.domain);
+        END
+    """)
+
+    # Trigger: DELETE - remove from FTS index
+    conn.execute("""
+        CREATE TRIGGER IF NOT EXISTS comprehensions_fts_delete
+        AFTER DELETE ON comprehensions
+        BEGIN
+            INSERT INTO comprehensions_fts(comprehensions_fts, rowid, id, topic, domain)
+            VALUES ('delete', OLD.rowid, OLD.id, OLD.topic, OLD.domain);
+        END
+    """)
+
+    # Trigger: UPDATE - update FTS index
+    # FTS5 update requires delete then insert
+    conn.execute("""
+        CREATE TRIGGER IF NOT EXISTS comprehensions_fts_update
+        AFTER UPDATE ON comprehensions
+        BEGIN
+            INSERT INTO comprehensions_fts(comprehensions_fts, rowid, id, topic, domain)
+            VALUES ('delete', OLD.rowid, OLD.id, OLD.topic, OLD.domain);
+            INSERT INTO comprehensions_fts(rowid, id, topic, domain)
+            VALUES (NEW.rowid, NEW.id, NEW.topic, NEW.domain);
+        END
     """)
