@@ -74,22 +74,23 @@ Plans:
 - [x] 03-02-PLAN.md - Multi-dimensional retrieval + FTS5 (TDD, Wave 2)
 - [x] 03-03-PLAN.md - BeliefStore facade + ObservationIndex (Wave 3)
 
-### Phase 4: Convergence Detection
+### Phase 4: Convergence Detection ✓
 **Goal**: System notices when the same structure appears across domains (rising tide)
 **Depends on**: Phase 3
 **Requirements**: Structural similarity, "reminds me of" operation, accumulation tracking
+**Status**: COMPLETE
 **Success Criteria** (what must be TRUE):
-  1. Each new comprehension can query "what does this remind me of?"
-  2. Similarity is structural (same shape), not keyword-based
-  3. System tracks where comprehension density is building
-  4. Candidate patterns emerge from repeated structure (not explicit search)
-  5. Rising tide: accumulation creates conditions for pattern recognition
+  1. ✓ Each new comprehension can query "what does this remind me of?"
+  2. ✓ Similarity is structural (same shape), not keyword-based
+  3. ✓ System tracks where comprehension density is building
+  4. ✓ Candidate patterns emerge from repeated structure (not explicit search)
+  5. ✓ Rising tide: accumulation creates conditions for pattern recognition
 
 **Plans:** 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md - Embedder + VectorStore foundation (Wave 1)
-- [ ] 04-02-PLAN.md - SimilarityFinder + AccumulationTracker (Wave 2)
+- [x] 04-01-PLAN.md - Embedder + VectorStore foundation (Wave 1)
+- [x] 04-02-PLAN.md - SimilarityFinder + AccumulationTracker (Wave 2)
 
 ### Phase 5: Meta-Comprehension
 **Goal**: Patterns crystallize into named meta-comprehensions when confidence is high
@@ -150,7 +151,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 1. Cognitive Primitives | 3/3 | ✓ Complete | 2026-02-13 |
 | 2. Bayesian Update | 3/3 | ✓ Complete | 2026-02-13 |
 | 3. Belief Store | 3/3 | ✓ Complete | 2026-02-13 |
-| 4. Convergence Detection | 0/2 | Planned | - |
+| 4. Convergence Detection | 2/2 | ✓ Complete | 2026-02-13 |
 | 5. Meta-Comprehension | 0/TBD | Not started | - |
 | 6. The Web | 0/TBD | Not started | - |
 | 7. API Harness | 0/TBD | Not started | - |
@@ -158,4 +159,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 ---
 *Roadmap reframed: 2026-02-13*
 *Architecture: .planning/ARCHITECTURE_SKETCH.md*
-*Total phases: 7 (3 complete, 4 remaining)*
+*Total phases: 7 (4 complete, 3 remaining)*
