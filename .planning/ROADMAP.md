@@ -30,11 +30,12 @@ This roadmap delivers a system where verified understanding is the primary artif
   2. Schema distinguishes comprehension (structured understanding) from raw observations (events)
   3. Format supports Bayesian structure (prior, observation, posterior) in natural language
   4. Sample comprehension documents validate against schema
-**Plans**: TBD
+**Plans**: 3 plans in 3 waves
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — Define Pydantic schema models (Observation, Comprehension, ConfidenceLevel)
+- [ ] 01-02-PLAN.md — Create specification documents (COMPREHENSION_FORMAT.md, OBSERVATION_FORMAT.md)
+- [ ] 01-03-PLAN.md — Create sample documents and validation tests
 
 ### Phase 2: Memory Persistence
 **Goal**: Three memory types (episodic, semantic, procedural) persist across agent sessions
@@ -157,7 +158,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Comprehension Format | 0/TBD | Not started | - |
+| 1. Comprehension Format | 0/3 | Planned | - |
 | 2. Memory Persistence | 0/TBD | Not started | - |
 | 3. Memory Intelligence | 0/TBD | Not started | - |
 | 4. Comprehension Modeling | 0/TBD | Not started | - |
