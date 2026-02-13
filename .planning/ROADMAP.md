@@ -45,10 +45,12 @@ Phase 1 (primitives) is complete. Remaining phases build the operations, memory 
   4. Observations can be garbage collected after informing comprehension
   5. The update operation IS compression (no separate compress step)
 
+**Plans:** 3 plans
+
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md - Confidence transition state machine (TDD, Wave 1)
+- [ ] 02-02-PLAN.md - Core Bayesian update operation (TDD, Wave 2)
+- [ ] 02-03-PLAN.md - Observation lifecycle management (Wave 1)
 
 ### Phase 3: Belief Store
 **Goal**: Comprehensions persist with memory efficiency; retrieval is by relevance, not "load all"
@@ -136,7 +138,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Cognitive Primitives | 3/3 | ✓ Complete | 2026-02-13 |
-| 2. Bayesian Update | 0/TBD | Not started | - |
+| 2. Bayesian Update | 0/3 | Planned | - |
 | 3. Belief Store | 0/TBD | Not started | - |
 | 4. Convergence Detection | 0/TBD | Not started | - |
 | 5. Meta-Comprehension | 0/TBD | Not started | - |
