@@ -2,6 +2,8 @@
 
 from .migrations import ensure_schema
 from .repository import SQLiteComprehensionRepository
+from .observation_index import ObservationIndex
+from .belief_store import BeliefStore
 from .queries import (
     CONFIDENCE_ORDER,
     build_filter_query,
@@ -10,8 +12,14 @@ from .queries import (
 )
 
 __all__ = [
-    "ensure_schema",
+    # Main public interface
+    "BeliefStore",
+    # Supporting classes
     "SQLiteComprehensionRepository",
+    "ObservationIndex",
+    # Schema
+    "ensure_schema",
+    # Query helpers
     "CONFIDENCE_ORDER",
     "build_filter_query",
     "build_confidence_filter",
