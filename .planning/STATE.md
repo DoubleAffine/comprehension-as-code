@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 2 of 7 (Bayesian Update)
-Plan: 2 of 3 in current phase (02-01, 02-03 done; 02-02 pending)
-Status: Executing plans
-Last activity: 2026-02-13 — Completed 02-03 observation lifecycle
+Plan: 3 of 3 in current phase (02-01, 02-02, 02-03 complete)
+Status: Phase complete
+Last activity: 2026-02-13 — Completed 02-02 bayesian_update
 
-Progress: [██░░░░░░░░] 23% (1.66/7 phases)
+Progress: [███░░░░░░░] 29% (2/7 phases)
 
 ## Architecture Reference
 
@@ -32,8 +32,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Cognitive Primitives | ✓ Complete |
-| 2 | Bayesian Update | ◆ Current |
-| 3 | Belief Store | ○ Pending |
+| 2 | Bayesian Update | ✓ Complete |
+| 3 | Belief Store | ◆ Current |
 | 4 | Convergence Detection | ○ Pending |
 | 5 | Meta-Comprehension | ○ Pending |
 | 6 | The Web | ○ Pending |
@@ -51,9 +51,10 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | Phase | Plans | Status |
 |-------|-------|--------|
 | 1 | 3/3 | ✓ Complete |
-| 2 | 2/3 | ◆ In Progress |
+| 2 | 3/3 | ✓ Complete |
 
 **Plan 02-01:** 2min - Confidence transition state machine
+**Plan 02-02:** 2min - Bayesian update function
 **Plan 02-03:** 2min - Observation lifecycle management
 
 ## Accumulated Context
@@ -80,6 +81,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | Contradicting on UNKNOWN -> LOW | Learning something from contradiction | 2 |
 | INCORPORATED == COLLECTIBLE | Retention policies deferred to future | 2 |
 | Lifecycle not thread-safe | Callers handle synchronization | 2 |
+| Idempotency via observation ID | Simple check before processing | 2 |
+| Contradicting requires new_statement | Enforced via ValueError | 2 |
 
 ### Open Questions
 
@@ -90,8 +93,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Completed 02-03-PLAN.md
-Next: Execute 02-02-PLAN.md (remaining plan in phase 2)
+Stopped at: Completed 02-02-PLAN.md (Phase 2 complete)
+Next: Start Phase 3 - Belief Store
 
 ---
-*Next: /gsd:execute-phase 02*
+*Next: /gsd:execute-phase 03*
