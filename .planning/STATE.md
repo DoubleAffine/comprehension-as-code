@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-13)
 
 **Core value:** Understanding is computation.
-**Current focus:** Phase 3 - Belief Store
+**Current focus:** Phase 4 - Convergence Detection
 
 ## Current Position
 
-Phase: 3 of 7 (Belief Store)
-Plan: 3 of 3 in current phase (03-03 complete)
-Status: Phase complete
-Last activity: 2026-02-13 — Completed 03-03 BeliefStore and ObservationIndex
+Phase: 4 of 7 (Convergence Detection)
+Plan: 1 of 3 in current phase (04-01 complete)
+Status: In progress
+Last activity: 2026-02-13 — Completed 04-01 Embeddings & Vector Store
 
 Progress: [████░░░░░░] 43% (3/7 phases)
 
@@ -60,6 +60,7 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 **Plan 03-01:** 2min - SQLite Repository with CRUD operations
 **Plan 03-02:** 4min - Multi-dimensional retrieval with FTS5
 **Plan 03-03:** 3min - BeliefStore facade and ObservationIndex
+**Plan 04-01:** 3min - Embeddings & Vector Store (sentence-transformers, sqlite-vec)
 
 ## Accumulated Context
 
@@ -99,6 +100,10 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 | BeliefStore auto-manages index | save() records refs, delete() cleans them up | 3 |
 | Pruning is marking not deleting | observation_pruned table tracks deleted content | 3 |
 | API harness over agent tools | Understanding automatic, not opt-in; wraps all model calls | 7 |
+| all-MiniLM-L6-v2 for embeddings | Balance of quality (384 dims) and speed (22MB) | 4 |
+| Prior + posterior embedding | Captures belief transformation shape, not just topic | 4 |
+| sqlite-vec k=? syntax | KNN queries require k in WHERE clause, not LIMIT | 4 |
+| Hash-based rowid mapping | Stable positive int32 keys via hash & 0x7FFFFFFF | 4 |
 
 ### Open Questions
 
@@ -113,10 +118,8 @@ Experience → Observation → Comprehension → Meta-comprehension → The Web
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Architectural pivot - Agent Integration → API Harness
-Change: Understanding is now automatic via API harness, not opt-in via agent tools
-Next: Begin Phase 4 - Convergence Detection
+Stopped at: Completed 04-01-PLAN.md (Embeddings & Vector Store)
+Next: Execute 04-02-PLAN.md (Similarity Detection)
 
 ---
-*Architecture pivot: 2026-02-13 - See ARCHITECTURE_SKETCH.md for harness design*
-*Next: /gsd:plan-phase 4*
+*Next: /gsd:execute-phase 04-02*
