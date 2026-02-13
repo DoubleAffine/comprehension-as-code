@@ -85,10 +85,11 @@ Plans:
   4. Candidate patterns emerge from repeated structure (not explicit search)
   5. Rising tide: accumulation creates conditions for pattern recognition
 
+**Plans:** 2 plans
+
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
-- [ ] 04-03: TBD
+- [ ] 04-01-PLAN.md - Embedder + VectorStore foundation (Wave 1)
+- [ ] 04-02-PLAN.md - SimilarityFinder + AccumulationTracker (Wave 2)
 
 ### Phase 5: Meta-Comprehension
 **Goal**: Patterns crystallize into named meta-comprehensions when confidence is high
@@ -149,7 +150,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 1. Cognitive Primitives | 3/3 | ✓ Complete | 2026-02-13 |
 | 2. Bayesian Update | 3/3 | ✓ Complete | 2026-02-13 |
 | 3. Belief Store | 3/3 | ✓ Complete | 2026-02-13 |
-| 4. Convergence Detection | 0/TBD | Not started | - |
+| 4. Convergence Detection | 0/2 | Planned | - |
 | 5. Meta-Comprehension | 0/TBD | Not started | - |
 | 6. The Web | 0/TBD | Not started | - |
 | 7. API Harness | 0/TBD | Not started | - |
